@@ -10,15 +10,11 @@ for n in range(254):
         time.sleep(0.04)
     except:
         n = n-1
-for n in range(254):
+        
+        time.sleep(0.5)
+for n in range(150):
     try:
-        i2c.writeto(0x4, bytes([n,254-n,254-n,n]), stop=True)
-        time.sleep(0.04)
-    except:
-        n = n-1
-for n in range(254):
-    try:
-        i2c.writeto(0x4, bytes([n,254-n,n,254-n]), stop=True)
+        i2c.writeto(0x4, bytes([n,254-n,254-n,254-n]), stop=True)
         time.sleep(0.04)
     except:
         n = n-1

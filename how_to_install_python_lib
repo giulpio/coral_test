@@ -1,0 +1,4 @@
+install all python library with 
+        sudo python3 -m pi pinstall your_lib
+
+using sudo reduce possible problems in services

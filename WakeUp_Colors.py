@@ -1,12 +1,24 @@
 #!/usr/bin/python3
 import sys
 sys.path.append('/usr/local/lib/python3.7/dist-packages')
+
+
+#import coral I/O
 import board
 import busio
 import time
+
+
+#import simple sound lib
 from playsound import playsound
+
+#initilaize i2c
 i2c = busio.I2C(board.I2C2_SCL, board.I2C2_SDA)
+
+#play startup sound async
 playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
+
+#led fade
 for i in range(2):      
 	for n in range(50):
 		try:

@@ -1,0 +1,7 @@
+leds uses I2C
+
+address: 0x04
+
+send 4 bytes with 0-255
+
+[brightness, red, green, blue]

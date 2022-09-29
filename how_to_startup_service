@@ -5,7 +5,7 @@ HOW TO CREATE STARTUP SERVICE WITH PYTHON SCRIPT:
             sudo nano /etc/systemd/system/startupplay.service
 
 
-
+'
 [Unit]
 Description=Startup Play
 After=multi-user.target
@@ -17,7 +17,7 @@ ExecStart=/home/mendel/coral_test/WakeUp_Colors.py
 
 [Install]
 WantedBy=multi-user.target
-
+'
 
 2- Give permission to file 
 

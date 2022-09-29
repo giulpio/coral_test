@@ -1,8 +1,9 @@
 import board
 import busio
 import time
-
+from playsound import playsound
 i2c = busio.I2C(board.I2C2_SCL, board.I2C2_SDA)
+playsound('/home/mendel/coral_test/Windows XP Startup.mp3')
 for i in range(3):	
 	for n in range(50):
 		try:

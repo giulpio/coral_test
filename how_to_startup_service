@@ -1,0 +1,34 @@
+HOW TO CREATE STARTUP SERVICE WITH PYTHON SCRIPT:
+
+1-Create new service with:
+            
+            sudo nano /etc/systemd/system/startupplay.service
+
+
+
+[Unit]
+Description=Startup Play
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/home/mendel/
+Environment = "PTHONPATH=$PYTHONPATH:/home/mendel/.local/lib/python3.7/site-pac$
+ExecStart=/home/mendel/coral_test/WakeUp_Colors.py
+
+[Install]
+WantedBy=multi-user.target
+
+
+2- Give permission to file 
+
+            sudo chmod 777 /home/mendel/coral_test/WakeUp_Colors.py
+
+        !!!!!!! repeat this always when change files!!!
+
+3- Enable Service
+
+            sudo systemctl daemon-reload
+
+            sudo systemctl start startupplay.service
+
+

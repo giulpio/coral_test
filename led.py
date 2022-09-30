@@ -14,8 +14,8 @@ def led(r=0, g=0, b=0):
 
 def led_fade(t):
     for i in range(255):
-...     b=i-125
-...     if b<0:
-...             b=-b
-...     led(i, 255-i, b)
-...     time.sleep(t)
+        b=i-125
+        if b<0:
+            b=-b
+        led(i, 255-i, b)
+        time.sleep(t)

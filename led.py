@@ -1,7 +1,9 @@
 from i2c import i2c2
 import time
 
-def led(r=0, g=0, b=0):
+
+#send led color
+def send(r=0, g=0, b=0):
     success=False
     while not success:
         try:
@@ -12,10 +14,26 @@ def led(r=0, g=0, b=0):
             pass
 
 
+#use this to set led single color
+def led(r,g,b):
+    while not i2c2.try_lock():
+        pass      
+    try:
+        send(r,g,b)
+    finally:
+        i2c2.unlock()
+ 
+
+#function to fade led colors
 def led_fade(t):
-    for i in range(255):
-        b=i-125
-        if b<0:
-            b=-b
-        led(i, 255-i, b)
-        time.sleep(t)
+    while not i2c2.try_lock():
+        pass     
+    try:
+        for i in range(255):
+            b=i-125
+            if b<0:
+                b=-b
+            send(i, 255-i, b)
+            time.sleep(t)
+    finally:
+        i2c2.unlock()

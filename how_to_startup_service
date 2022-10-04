@@ -28,6 +28,7 @@ WantedBy=multi-user.target
 3- Enable Service
 
             sudo systemctl daemon-reload
+            sudo systemctl enable startupplay.service
 
             sudo systemctl start startupplay.service
 

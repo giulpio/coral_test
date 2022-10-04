@@ -1,0 +1,17 @@
+sudo apt-get install libffi-dev
+sudo apt-get install python-dev
+sudo apt-get install python3-dev
+sudo apt-get install libportaudio2
+sudo apt-get install python3-libgpiod
+
+
+
+python3 -m pip install adafruit-blinka
+pip3 install sounddevice
+pip3 install playsound
+sudo pip3 install adafruit-circuitpython-mpu6050
+
+
+
+
+journalctl -u startupplay

@@ -1,0 +1,2 @@
+-creare sh setup
+-unire python per file coral_test

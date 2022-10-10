@@ -10,7 +10,9 @@ try:
     while True:
         if value != button.value:
             if value:
-                print(value)
+                print("acceso")
+            else:
+                print("spento")
             value = not value
 
 finally:

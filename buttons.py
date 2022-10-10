@@ -18,8 +18,8 @@ class button:
     
 
 
-button1 = button(board.UART1TX)
-button2 = button(board.UART1RX)
+button1 = button(board.GPIO65)
+button2 = button(board.GPIO64)
 switch = button(board.GPIO45)
 neo = button(board.GPIO13)
 

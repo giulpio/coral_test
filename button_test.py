@@ -9,8 +9,9 @@ value = button.value
 try:
     while True:
         if value != button.value:
-            print("o")
-            value = button.value
+            if value:
+                print(value)
+            value = not value
 
 finally:
     button.deinit()

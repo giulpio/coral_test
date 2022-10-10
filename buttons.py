@@ -3,7 +3,6 @@
 #button1 uart1tx
 #button2 uart1rx
 
-from msilib.schema import Class
 import board
 import digitalio
 import time

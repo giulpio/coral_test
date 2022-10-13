@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "########### installing apt dependencies ###########"
+    echo "########### installing apt dependencies ###########"
 sudo apt-get install -y libffi-dev python-dev python3-dev libportaudio2 python3-libgpiod
 echo "########### installing python lib ###########"
 python3 -m pip install adafruit-blinka sounddevice playsound adafruit-circuitpython-mpu6050

@@ -18,9 +18,9 @@ class button:
     
 
 
-button1 = button(board.GPIO65)
-button2 = button(board.GPIO64)
-switch = button(board.GPIO45)
+button1 = button(board.GPIO12)
+button2 = button(board.GPIO25)
+switch = button(board.GPIO37)
 neo = button(board.GPIO13)
 
 

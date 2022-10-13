@@ -18,8 +18,8 @@ class button:
     
 
 
-button1 = button(board.GPIO12)
-button2 = button(board.GPIO25)
+button1 = button(board.PWM_A)
+button2 = button(board.PWM_B)
 switch = button(board.GPIO37)
 neo = button(board.GPIO13)
 

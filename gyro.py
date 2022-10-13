@@ -11,11 +11,10 @@ if __name__ == "__main__":
 
     import argparse
     parser = argparse.ArgumentParser(description='Script so useful.')
-    parser.add_argument("--del", type=int, default=1)
+    parser.add_argument("--delay", type=int, default=1)
 
     args = parser.parse_args()
-    a
-    delay = args.del
+    delay = args.delay
 
     while True:
         try:
@@ -26,5 +25,5 @@ if __name__ == "__main__":
         except:
             print("error")
 
-        time.sleep(del)
+        time.sleep(delay)
     

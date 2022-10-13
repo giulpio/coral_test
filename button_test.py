@@ -11,7 +11,7 @@ try:
     while True:
         if value != button.value:
             time.sleep(0.05)
-            if value:
+            if button.value:
                 print("acceso")
             else:
                 print("spento")

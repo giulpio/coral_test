@@ -2,6 +2,7 @@ import board
 import busio
 import time
 
+import os
 
 #import simple sound lib
 from playsound import playsound
@@ -11,3 +12,5 @@ i2c = busio.I2C(board.I2C2_SCL, board.I2C2_SDA)
 
 #play startup sound async
 playsound('/home/mendel/coral_test/beep-01a.mp3', block=True)
+
+os.system("sudo shutdown")

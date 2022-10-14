@@ -17,7 +17,7 @@ while True:
             button = digitalio.DigitalInOut(get_foo(board, l))
             
             b1=button.value
-            time.sleep(0.1)
+            time.sleep(0.05)
             final = b1 and button.value
 
             print(l + ': ' + str(final))  
@@ -25,6 +25,7 @@ while True:
             button.deinit()
         except:
                 pass
+    print("\n\n")
     time.sleep(0.4)
 
 

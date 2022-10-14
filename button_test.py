@@ -2,14 +2,8 @@ import board
 import digitalio
 import time
 
-import os
-clear = lambda: os.system('clear')
-
-
-def get_foo(someobject, foostring):
-    return getattr(someobject,foostring)
-
-
+LINE_UP = '\033[1A'
+LINE_CLEAR = '\x1b[2K'
 
 
 while True:
@@ -27,11 +21,13 @@ while True:
             print(l + ': ' + str(final))  
             #print(button.direction)
             button.deinit()
+            
         except:
                 pass
     #print("\n\n")
-    #time.sleep(0.4)
-    clear()
+    time.sleep(0.2)
+    print(LINE_UP, end=LINE_CLEAR)
+    #clear()
 
 
 

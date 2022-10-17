@@ -7,7 +7,7 @@ def send(r=0, g=0, b=0):
     success=False
     while not success:
         try:
-            i2c2.writeto(0x4, bytes([r,r,g,b]), stop=True)
+            i2c2.writeto(0x4, bytes([b,r,g,b]), stop=True)
             success = True
         except:
             print("suca")

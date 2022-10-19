@@ -13,27 +13,35 @@ LINE_UP = '\033[1A'
 LINE_CLEAR = '\x1b[2K'
 
 
-while True:
-    for i in [12,22]:
-        l='D'
-        l+=str(i)
-        #print(l)
-        try:
-            button = digitalio.DigitalInOut(get_foo(board, l))
-            
-            b1=button.value
-            time.sleep(0.05)
-            final = b1 and button.value
 
-            print(l + ': ' + str(final))  
-            #print(button.direction)
-            button.deinit()
-        except:
-                pass
-    #print("\n\n")
-    time.sleep(0.2)
-    print(LINE_UP, end=LINE_CLEAR)
-    #clear()
+if __name__ == "__main__":
+    try:
+        while True:
+            for i in [12,22]:
+                l='D'
+                l+=str(i)
+                #print(l)
+                try:
+                    button = digitalio.DigitalInOut(get_foo(board, l))
+                    
+                    b1=button.value
+                    time.sleep(0.05)
+                    final = b1 and button.value
+
+                    print(l + ': ' + str(final))  
+                    #print(button.direction)
+                    button.deinit()
+                except:
+                        pass
+            #print("\n\n")
+            time.sleep(0.2)
+            clear()
+
+    except KeyboardInterrupt:
+        button.deinit()
+
+
+       
 
 
 

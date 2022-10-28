@@ -16,7 +16,8 @@ LINE_CLEAR = '\x1b[2K'
 
 if __name__ == "__main__":
     try:
-        while True:
+        #while True:
+        if True:
             for i in [0,30]:
                 l='D'
                 l+=str(i)
@@ -27,8 +28,8 @@ if __name__ == "__main__":
                     b1=button.value
                     time.sleep(0.05)
                     final = b1 and button.value
-
-                    print(l + ': ' + str(final))  
+                    if b1:
+                        print(l + ': ' + str(final))  
                     #print(button.direction)
                     button.deinit()
                 except:
@@ -36,7 +37,7 @@ if __name__ == "__main__":
                         pass
             #print("\n\n")
             time.sleep(0.2)
-            clear()
+            #clear()
 
     except KeyboardInterrupt:
         button.deinit()

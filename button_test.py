@@ -32,7 +32,7 @@ if __name__ == "__main__":
                     #print(button.direction)
                     button.deinit()
                 except:
-                        print("FAIL: " + l + ': ' + str(final))
+                        print("FAIL: " + l)
                         pass
             #print("\n\n")
             time.sleep(0.2)

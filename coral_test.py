@@ -24,6 +24,8 @@ try:
                 led(255,0,0)
             elif read(button2):
                 led(0,255,255)
+            else:
+                led(255,255,255)
         elif state == 1:
             led(0,0,0,255)
         else:

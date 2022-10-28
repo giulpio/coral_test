@@ -18,7 +18,11 @@ def read(button):
     time.sleep(0.05)
     return (b1 and button.value)
 
-
+def deinit():
+    button1.deinit()
+    button2.deinit()
+    switch.deinit()
+    neo.deinit()
 """
 from symbol import classdef
 

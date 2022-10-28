@@ -37,6 +37,7 @@ try:
         #time.sleep(0.2)
 
 
-except:
+except KeyboardInterrupt:
+    deinit()
     print("error")
 #shutdown.shutdown()

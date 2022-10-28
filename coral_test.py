@@ -35,7 +35,7 @@ try:
         else:
             led(0,0,0)
         
-        if gyro.mpu.acceleration[1] > 2 or gyro.mpu.acceleration < -1:
+        if gyro.mpu.acceleration[1] > 2 or gyro.mpu.acceleration[1] < -1:
             led(255,255,0)
         #time.sleep(0.2)
 

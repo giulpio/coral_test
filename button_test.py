@@ -17,7 +17,7 @@ LINE_CLEAR = '\x1b[2K'
 if __name__ == "__main__":
     try:
         while True:
-            for i in [12,22]:
+            for i in [0,30]:
                 l='D'
                 l+=str(i)
                 #print(l)
@@ -32,6 +32,7 @@ if __name__ == "__main__":
                     #print(button.direction)
                     button.deinit()
                 except:
+                        print("FAIL: " + l + ': ' + str(final))
                         pass
             #print("\n\n")
             time.sleep(0.2)

@@ -7,12 +7,13 @@ import board
 import digitalio
 import time
 
-s
-
 button1 = digitalio.DigitalInOut(board.D12)
 button2 = digitalio.DigitalInOut(board.D22)
 switch = digitalio.DigitalInOut(board.D19)
 neo = digitalio.DigitalInOut(board.D16)
+
+
+
 
 """
 from symbol import classdef

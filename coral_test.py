@@ -16,10 +16,11 @@ maxstate = 2
 try:
     while True:
         if read(switch):
+            print("read_switch")
             time.sleep(1)
-            state+=1
-            if state > maxstate:
-                state = 0
+            #state+=1
+            #if state > maxstate:
+             #   state = 0
         if state == 0:
             if read(button1):
                 led(255,0,0)
@@ -34,5 +35,4 @@ try:
         time.sleep(0.2)
 
 #shutdown.shutdown()
-
 

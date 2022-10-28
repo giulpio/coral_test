@@ -13,6 +13,10 @@ switch = digitalio.DigitalInOut(board.D19)
 neo = digitalio.DigitalInOut(board.D16)
 
 
+def read(button):
+    b1=button.value
+    time.sleep(0.05)
+    return (b1 and button.value)
 
 
 """

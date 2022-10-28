@@ -24,7 +24,6 @@ if __name__ == "__main__":
                 #print(l)
                 try:
                     button = digitalio.DigitalInOut(get_foo(board, l))
-                    
                     b1=button.value
                     time.sleep(0.05)
                     final = b1 and button.value

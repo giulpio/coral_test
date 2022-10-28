@@ -37,3 +37,15 @@ def led_fade(t):
             time.sleep(t)
     finally:
         i2c2.unlock()
+
+
+
+if __name__ == "__main":
+    try:
+        while(True):
+            try:
+                led_fade(200);
+            except:
+                pass
+    except KeyboardInterrupt:
+        print("Ciao")

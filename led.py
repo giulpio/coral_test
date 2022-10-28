@@ -40,7 +40,7 @@ def led_fade(t):
 
 
 
-if __name__ == "__main":
+if __name__ == "__main__":
     try:
         while(True):
             try:

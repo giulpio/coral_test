@@ -34,5 +34,6 @@ try:
             led(0,0,0)
         time.sleep(0.2)
 
+except:
+    print("error")
 #shutdown.shutdown()
-

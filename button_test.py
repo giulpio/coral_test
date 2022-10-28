@@ -18,7 +18,7 @@ if __name__ == "__main__":
     try:
         #while True:
         if True:
-            for i in [0,30]:
+            for i in range(0,30):
                 l='D'
                 l+=str(i)
                 #print(l)
@@ -33,7 +33,7 @@ if __name__ == "__main__":
                     #print(button.direction)
                     button.deinit()
                 except:
-                        print("FAIL: " + l)
+                        #print("FAIL: " + l)
                         pass
             #print("\n\n")
             time.sleep(0.2)

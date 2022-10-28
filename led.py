@@ -29,11 +29,23 @@ def led_fade(t):
     while not i2c2.try_lock():
         pass     
     try:
+        #r=0--> 255
+        #g=255-->0
+        #b = 125 --> 0 --> 125
         for i in range(255):
             b=i-125
             if b<0:
                 b=-b
             send(i, 255-i, b)
+            time.sleep(t)
+        #r=255--> 0
+        #g=0-->255
+        #b = 125 --> 255 --> 125
+        for i in range(255):
+            b=i+125
+            if b>255:
+                b=255 + 125 -b
+            send(255-i, i, b)
             time.sleep(t)
     finally:
         i2c2.unlock()
@@ -44,7 +56,7 @@ if __name__ == "__main__":
     try:
         while(True):
             try:
-                led_fade(200);
+                led_fade(200)
             except:
                 pass
     except KeyboardInterrupt:

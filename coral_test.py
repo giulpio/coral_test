@@ -21,7 +21,7 @@ try:
             #state+=1
             #if state > maxstate:
             #    state = 0
-            led(0,0,0,255)
+            led(0,0,255)
             print("Acceleration: X:%.2f, Y: %.2f, Z: %.2f m/s^2" % (gyro.mpu.acceleration))
         if state == 0:
             if read(button1):
@@ -31,7 +31,7 @@ try:
             else:
                 led(255,255,255)
         elif state == 1:
-            led(0,0,0,255)
+            led(0,0,255)
         else:
             led(0,0,0)
         #time.sleep(0.2)

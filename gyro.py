@@ -6,31 +6,23 @@ import adafruit_mpu6050
 
 mpu = adafruit_mpu6050.MPU6050(i2c1)
 
+old_g= (0,0,0)
+old_a=(0,0,0)
 
 
 def delta_acceleration():
-    try:
-        print(old)
-    except:
-        print("old_not_found")
-    #try: 
-    #    old
-    #except:
-        print("first time") 
-        old = mpu.acceleration
-    print("old: %.3f, %.3f, %.3f" % old)
+    global old_a
+    print("old: %.3f, %.3f, %.3f" %  old_a)
     print("now: %.3f, %.3f, %.3f" %  mpu.acceleration)
-    res = tuple(map(lambda i, j: i - j, mpu.acceleration, old))
+    res = tuple(map(lambda i, j: i - j, mpu.acceleration, old_a))
     print("res: %.3f, %.3f, %.3f" % res)
-    old = mpu.acceleration
+    old_A = mpu.acceleration
     return res
 
 def delta_gyro():
-    try: old
-    except NameError:
-        old = mpu.gyro
-    res = tuple(map(lambda i, j: i - j, mpu.gyro, old))
-    old = mpu.gyro
+    global old_g
+    res = tuple(map(lambda i, j: i - j, mpu.gyro, old_g))
+    old_g = mpu.gyro
     return res
 
 

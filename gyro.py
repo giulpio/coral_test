@@ -9,7 +9,8 @@ mpu = adafruit_mpu6050.MPU6050(i2c1)
 
 
 def delta_acceleration():
-    try: old
+    try: 
+        old
     except:
         print("first time") 
         old = mpu.acceleration

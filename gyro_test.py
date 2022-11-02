@@ -8,9 +8,9 @@ if __name__ == "__main__":
         while True:
             try:
                 delta = dg()
-                if delta[0] > 0.2 or delta[1] > 0.2 or delta[2] > 0.2:
+                if delta[0] > 0.05 or delta[1] > 0.05 or delta[2] > 0.05:
                     led(randint(0,255), randint(0,255), randint(0,255))
-                    time.sleep(0.2)
+                    #time.sleep(0.2)
                     dg()
                     print("move")
                 else:

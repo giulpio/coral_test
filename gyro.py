@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     while True:
         try:
-            delta_gdelta_a = delta_acceleration()
+            delta_a = delta_acceleration()
             delta_g = delta_gyro()
             print("Delta Acceleration: %.3f, %.3f, %.3f" %  delta_a)
             print("        Delta Gyro: %.3f, %.3f, %.3f" %  delta_g)

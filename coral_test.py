@@ -33,9 +33,9 @@ while True:
         pass
     else:
         if timer() - last_act > 0.01:
-            print("low")
+            #print("low")
             last_act = timer()
-            led_low()
+            led_low(5)
         pass
 
 

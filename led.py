@@ -30,11 +30,11 @@ def led(r,g,b):
         rg, gg, bg = r,g,b
         i2c2.unlock()
  
-def led_low():
+def led_low(i):
     global rg, gg, bg
-    rg = rg-1 if rg>0 else 0 
-    gg = gg-1 if gg>0 else 0 
-    bg = bg-1 if bg>0 else 0 
+    rg = rg-i if rg-i>0 else 0 
+    gg = gg-i if gg-i>0 else 0 
+    bg = bg-i if bg-i>0 else 0 
     led(rg, gg, bg)
 
 #function to fade led colors

@@ -16,7 +16,7 @@ def delta_acceleration():
     print("now: %.3f, %.3f, %.3f" %  mpu.acceleration)
     res = tuple(map(lambda i, j: i - j, mpu.acceleration, old_a))
     print("res: %.3f, %.3f, %.3f" % res)
-    old_A = mpu.acceleration
+    old_a = mpu.acceleration
     return res
 
 def delta_gyro():

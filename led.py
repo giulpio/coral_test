@@ -1,16 +1,21 @@
 from i2c import i2c2
 import time
 
+rg,gg,bg = 0,0,0
 
 #send led color
 def send(r=0, g=0, b=0):
     success=False
-    while not success:
+    global rg, gg, bg
+    rg, gg, bg = r,g,b
+    count = 0
+    while not success and count < 25:
         try:
             i2c2.writeto(0x4, bytes([b,r,g,b]), stop=True)
             success = True
         except:
-            print("suca")
+            count = count + 1
+            print("can't send to led")
             pass
 
 
@@ -21,8 +26,16 @@ def led(r,g,b):
     try:
         send(r,g,b)
     finally:
+        global rg, gg, bg
+        rg, gg, bg = r,g,b
         i2c2.unlock()
  
+def led_low():
+    global rg, gg, bg
+    rg = rg-1 if rg>0 else 0 
+    gg = gg-1 if gg>0 else 0 
+    bg = bg-1 if bg>0 else 0 
+    led(rg, gg, bg)
 
 #function to fade led colors
 def led_fade(t):
@@ -48,6 +61,8 @@ def led_fade(t):
             send(255-i, i, b)
             time.sleep(t)
     finally:
+        global rg, gg, bg
+        rg, gg, bg = r,g,b
         i2c2.unlock()
 
 

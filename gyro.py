@@ -10,14 +10,20 @@ mpu = adafruit_mpu6050.MPU6050(i2c1)
 
 def delta_acceleration():
     try: old
-    except NameError: old = mpu.acceleration
+    except NameError:
+        print("first time") 
+        old = mpu.acceleration
+    print("old: " + old)
+    print("now: " +  mpu.acceleration)
     res = tuple(map(lambda i, j: i - j, mpu.acceleration, old))
+    print("res: " + res)
     old = mpu.acceleration
     return res
 
 def delta_gyro():
     try: old
-    except NameError: old = mpu.gyro
+    except NameError:
+        old = mpu.gyro
     res = tuple(map(lambda i, j: i - j, mpu.gyro, old))
     old = mpu.gyro
     return res

@@ -13,10 +13,10 @@ def delta_acceleration():
     except NameError:
         print("first time") 
         old = mpu.acceleration
-    print("old: %.3f, %.3f, %.3f" + old)
-    print("now: %.3f, %.3f, %.3f" +  mpu.acceleration)
+    print("old: %.3f, %.3f, %.3f" % old)
+    print("now: %.3f, %.3f, %.3f" %  mpu.acceleration)
     res = tuple(map(lambda i, j: i - j, mpu.acceleration, old))
-    print("res: %.3f, %.3f, %.3f" + res)
+    print("res: %.3f, %.3f, %.3f" % res)
     old = mpu.acceleration
     return res
 

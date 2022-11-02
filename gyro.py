@@ -7,6 +7,22 @@ import adafruit_mpu6050
 mpu = adafruit_mpu6050.MPU6050(i2c1)
 
 
+
+def delta_acceleration():
+    try: old
+    except NameError: old = mpu.acceleration
+    res = tuple(map(lambda i, j: i - j, mpu.acceleration, old))
+    old = mpu.acceleration
+    return res
+
+def delta_gyro():
+    try: old
+    except NameError: old = mpu.gyro
+    res = tuple(map(lambda i, j: i - j, mpu.gyro, old))
+    old = mpu.gyro
+    return res
+
+
 if __name__ == "__main__":
 
     import argparse

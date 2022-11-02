@@ -17,6 +17,7 @@ if __name__ == "__main__":
                     pass
             except:
                 print("some errors")
+                raise TypeError
 
-    except KeyboardInterrupt:
+    finally:
         print("end")

@@ -1,8 +1,9 @@
 
 from i2c import i2c1
 import time
-
 import adafruit_mpu6050
+
+
 
 mpu = adafruit_mpu6050.MPU6050(i2c1)
 
@@ -12,6 +13,11 @@ old_a=(0,0,0)
 max_g =(0,0,0)
 max_a=(0,0,0)
 
+
+
+
+#compute delta between instant acceleration and previous acceleration
+#mm/s
 def delta_acceleration():
     global old_a
     #print("old: %.3f, %.3f, %.3f" %  old_a)
@@ -21,6 +27,7 @@ def delta_acceleration():
     old_a = mpu.acceleration
     return res
 
+#rad/s
 def delta_gyro():
     global old_g
     res = tuple(map(lambda i, j: i - j, mpu.gyro, old_g))
@@ -29,6 +36,23 @@ def delta_gyro():
 
 
 
+#detect movements in range 
+def move(trigger=0.05):
+    try:
+        delta = delta_gyro()
+        if delta[0] > trigger or delta[1] > trigger or delta[2] > trigger:
+            return True
+        else:
+            return False
+    except:
+        return True
+
+
+
+
+
+
+#use this for testing
 
 if __name__ == "__main__":
 

@@ -102,7 +102,8 @@ try:
             #print("maz: " + str(max_output))
             a = media * 255 / 3 
             try:
-                led(a,a,a)
+                print(a)
+                #led(a,a,a)
             except:
                 pass
             line = (gradient[int(np.clip(x, 0, 1) * (len(gradient) - 1))]

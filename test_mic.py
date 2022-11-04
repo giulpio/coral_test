@@ -9,6 +9,7 @@ import sounddevice as sd
 
 usage_line = ' press <enter> to quit, +<enter> or -<enter> to change scaling '
 
+
 def int_or_str(text):
     """Helper function for argument parsing."""
     try:
@@ -17,6 +18,10 @@ def int_or_str(text):
         return text
 
 
+try:
+    columns, _ = shutil.get_terminal_size()
+except AttributeError:
+    columns = 80
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(

@@ -37,6 +37,14 @@ def led_low(i):
     bg = bg-i if bg-i>0 else 0 
     led(rg, gg, bg)
 
+def led_high(i):
+    global rg, gg, bg
+    rg = rg+i if rg+i<255 else 255
+    gg = gg+i if gg+i<255 else 255 
+    bg = bg+i if bg+i<255 else 255 
+    led(rg, gg, bg)
+
+
 #function to fade led colors
 def led_fade(t):
     while not i2c2.try_lock():

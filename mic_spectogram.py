@@ -9,6 +9,7 @@ import sounddevice as sd
 
 usage_line = ' press <enter> to quit, +<enter> or -<enter> to change scaling '
 
+max_output = 0
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -91,7 +92,9 @@ try:
             for x in magnitude:
                 media = media+x
             media = media / len(magnitude)
-            print(media)
+            max_output=max(media, max_output)
+            print("now: " + str(media))
+            print("maz: " + str(max_output))
             line = (gradient[int(np.clip(x, 0, 1) * (len(gradient) - 1))]
                     for x in magnitude[low_bin:low_bin + args.columns])
             #print(line)

@@ -22,6 +22,7 @@ try:
                             blocksize=int(samplerate * block_duration / 1000),
                             samplerate=samplerate):
         while True:
+            global a
             if read(switch):
                 print(a)
                 led(a,a,a)

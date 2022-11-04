@@ -92,6 +92,7 @@ try:
             for x in magnitude:
                 media = media+x
             media = media / len(magnitude)
+            global max_output
             max_output=max(media, max_output)
             print("now: " + str(media))
             print("maz: " + str(max_output))

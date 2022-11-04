@@ -38,6 +38,7 @@ def callback(indata, frames, time, status):
        
         #print("now: " + str(media))
         #print("maz: " + str(max_output))
+        global a
         a = int(media * 255 / 3)
         a=min(a, 255) 
     else:

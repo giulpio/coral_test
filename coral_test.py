@@ -17,15 +17,37 @@ last_act = timer()
 startup.startup()
 time.sleep(1)
 
+printmic = False
+
+
+def led_mic(indata, frames, time, status):
+    if any(indata):
+        magnitude = np.abs(np.fft.rfft(indata[:, 0], n=fftsize))
+        media=0
+        for x in magnitude:
+            media = media+x
+        media = media / len(magnitude)
+        bright = int(media * 255 / 3)
+        bright=min(bright, 255) 
+        print(bright)
+        if printmic:
+            led(bright,bright,bright)
+            printmic=False
+        
+    else:
+        print('no input')
+
+
+
 try:
-    with sd.InputStream(device=device, channels=1, callback=callback,
+    with sd.InputStream(device=device, channels=1, callback=led_mic,
                             blocksize=int(samplerate * block_duration / 1000),
                             samplerate=samplerate):
         while True:
-            global a
             if read(switch):
-                print(a)
-                led(a,a,a)
+                printmic = True
+                #print(a)
+               #led(a,a,a)
                 last_act = timer()
             elif read(button1):
                 led(0,255,0)

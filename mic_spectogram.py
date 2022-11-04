@@ -75,7 +75,7 @@ for bg, fg in zip(colors, colors[1:]):
 
 try:
     samplerate = sd.query_devices(args.device, 'input')['default_samplerate']
-
+    print(args.device)
     delta_f = (high - low) / (args.columns - 1)
     fftsize = math.ceil(samplerate / delta_f)
     low_bin = math.floor(low / delta_f)
@@ -121,6 +121,7 @@ try:
         print(args.device)
         while True:
             response = input()
+            print(args.device)
             if response in ('', 'q', 'Q'):
                 break
             for ch in response:

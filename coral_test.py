@@ -27,7 +27,7 @@ def led_mic(indata, frames, time, status):
         for x in magnitude:
             media = media+x
         media = media / len(magnitude)
-        bright = int(media * 255 / 3)
+        bright = int(media * 255 / 2.8)
         bright=min(bright, 255) 
         #print(bright)
         global printmic

@@ -1,6 +1,7 @@
 
 #!/bin/bash
 
+#da cambiare con servizio utente non root
 
 sudo echo "[Unit]
 Description=Startup Play

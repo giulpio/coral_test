@@ -118,6 +118,7 @@ try:
     with sd.InputStream(device=args.device, channels=1, callback=callback,
                         blocksize=int(samplerate * args.block_duration / 1000),
                         samplerate=samplerate):
+        print(args.device)
         while True:
             response = input()
             if response in ('', 'q', 'Q'):

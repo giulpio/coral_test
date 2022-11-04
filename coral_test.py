@@ -30,6 +30,7 @@ def led_mic(indata, frames, time, status):
         bright = int(media * 255 / 3)
         bright=min(bright, 255) 
         print(bright)
+        global printmic
         if printmic:
             led(bright,bright,bright)
             printmic=False

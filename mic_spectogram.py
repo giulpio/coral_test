@@ -7,6 +7,10 @@ import shutil
 import numpy as np
 import sounddevice as sd
 
+
+from led import led
+
+
 usage_line = ' press <enter> to quit, +<enter> or -<enter> to change scaling '
 
 max_output = 0
@@ -94,8 +98,13 @@ try:
             media = media / len(magnitude)
             global max_output
             max_output=max(media, max_output)
-            print("now: " + str(media))
-            print("maz: " + str(max_output))
+            #print("now: " + str(media))
+            #print("maz: " + str(max_output))
+            a = media * 255 / 3 
+            try:
+                led(a,a,a)
+            except:
+                pass
             line = (gradient[int(np.clip(x, 0, 1) * (len(gradient) - 1))]
                     for x in magnitude[low_bin:low_bin + args.columns])
             #print(line)

@@ -41,34 +41,37 @@ def led_mic(indata, frames, time, status):
 
 
 try:
-    with sd.InputStream(device=device, channels=1, callback=led_mic,
-                            blocksize=int(samplerate * block_duration / 1000),
-                            samplerate=samplerate):
-        while True:
-            if read(switch):
-                printmic = True
-                #print(a)
-               #led(a,a,a)
-                last_act = timer()
-            elif read(button1):
-                led(0,255,0)
-                last_act=timer()
-                pass
-            elif read(button2):
-                led(0,0,255)
-                last_act=timer()
-                pass
-            elif move(0.08):
-                led(randint(0,255), randint(0,255), randint(0,255))
-                last_act=timer()
-                pass
-            else:
-                if timer() - last_act > 0.01:
-                    #print("low")
+    while True:
+        try:
+            with sd.InputStream(device=device, channels=1, callback=led_mic,
+                                    blocksize=int(samplerate * block_duration / 1000),
+                                    samplerate=samplerate):
+            
+                if read(switch):
+                    printmic = True
+                    #print(a)
+                    #led(a,a,a)
                     last_act = timer()
-                    led_low(5)
-                pass
-
+                elif read(button1):
+                    led(0,255,0)
+                    last_act=timer()
+                    pass
+                elif read(button2):
+                    led(0,0,255)
+                    last_act=timer()
+                    pass
+                elif move(0.08):
+                    led(randint(0,255), randint(0,255), randint(0,255))
+                    last_act=timer()
+                    pass
+                else:
+                    if timer() - last_act > 0.01:
+                        #print("low")
+                        last_act = timer()
+                        led_low(5)
+                    pass
+        except:
+            led(50,20,0)
 except KeyboardInterrupt:
     print('Interrupted by user')
 except Exception as e:

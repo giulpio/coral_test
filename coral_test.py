@@ -7,6 +7,8 @@ from led import led, led_low
 from buttons import *
 from random import randint
 
+from mic import *
+
 import time
 from timeit import default_timer as timer
 
@@ -15,28 +17,32 @@ last_act = timer()
 startup.startup()
 time.sleep(1)
 
-while True:
-    if read(switch):
-        led(255,255,255)
-        last_act = timer()
-    elif read(button1):
-        led(0,255,0)
-        last_act=timer()
-        pass
-    elif read(button2):
-        led(0,0,255)
-        last_act=timer()
-        pass
-    elif move(0.08):
-        led(randint(0,255), randint(0,255), randint(0,255))
-        last_act=timer()
-        pass
-    else:
-        if timer() - last_act > 0.01:
-            #print("low")
+
+with sd.InputStream(device=device, channels=1, callback=callback,
+                        blocksize=int(samplerate * block_duration / 1000),
+                        samplerate=samplerate):
+    while True:
+        if read(switch):
+            led(a,a,a)
             last_act = timer()
-            led_low(5)
-        pass
+        elif read(button1):
+            led(0,255,0)
+            last_act=timer()
+            pass
+        elif read(button2):
+            led(0,0,255)
+            last_act=timer()
+            pass
+        elif move(0.08):
+            led(randint(0,255), randint(0,255), randint(0,255))
+            last_act=timer()
+            pass
+        else:
+            if timer() - last_act > 0.01:
+                #print("low")
+                last_act = timer()
+                led_low(5)
+            pass
 
 
 

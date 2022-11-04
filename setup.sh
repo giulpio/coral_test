@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "########### update apt ############################"
-sudo apt update
+sudo apt update -y
 echo "########### upgrade apt ############################"
-sudo apt upgrade
+sudo apt upgrade -y
 echo "########### installing apt dependencies ###########"
 sudo apt-get install -y libffi-dev python-dev python3-dev libportaudio2 python3-libgpiod 
 echo "########### installing python lib ###########"

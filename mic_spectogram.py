@@ -100,10 +100,11 @@ try:
             max_output=max(media, max_output)
             #print("now: " + str(media))
             #print("maz: " + str(max_output))
-            a = int(media * 255 / 4) 
+            a = int(media * 255 / 3)
+            a=min(a, 255) 
             try:
                 print(a)
-                #led(a,a,a)
+                led(a,a,a)
             except:
                 pass
             line = (gradient[int(np.clip(x, 0, 1) * (len(gradient) - 1))]

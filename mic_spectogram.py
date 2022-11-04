@@ -100,7 +100,7 @@ try:
             max_output=max(media, max_output)
             #print("now: " + str(media))
             #print("maz: " + str(max_output))
-            a = media * 255 / 3 
+            a = int(media * 255 / 4) 
             try:
                 print(a)
                 #led(a,a,a)

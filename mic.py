@@ -41,6 +41,7 @@ def callback(indata, frames, time, status):
         global a
         a = int(media * 255 / 3)
         a=min(a, 255) 
+        print(a)
     else:
         print('no input')
 

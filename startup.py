@@ -17,7 +17,8 @@ from playsound import playsound
 i2c = busio.I2C(board.I2C2_SCL, board.I2C2_SDA)
 
 #play startup sound async
-playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
+#playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
+playsound('/home/mendel/coral_test/startup.wav', block=False)
 """"
 def startup():
 	#led fade

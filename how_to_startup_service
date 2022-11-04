@@ -13,7 +13,7 @@ After=multi-user.target
 [Service]
 WorkingDirectory=/home/mendel/
 Environment = "PTHONPATH=$PYTHONPATH:/home/mendel/.local/lib/python3.7/site-pac$
-ExecStart=/home/mendel/coral_test/WakeUp_Colors.py
+ExecStart=python3 /home/mendel/coral_test/WakeUp_Colors.py
 
 [Install]
 WantedBy=multi-user.target

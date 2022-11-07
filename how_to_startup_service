@@ -1,7 +1,6 @@
 HOW TO CREATE STARTUP SERVICE WITH PYTHON SCRIPT:
 
-1-Create new service with:
-            
+#use user service instead of sudo service to enable all the functionality (example: microphone not running in sudo services) 
             sudo nano /etc/systemd/system/startupplay.service
 
 

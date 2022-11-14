@@ -1,5 +1,5 @@
-from gyro import delta_gyro as dg
-from led import led
+from library.gyro import delta_gyro as dg
+from library.led import led
 from random import randint
 import time
 

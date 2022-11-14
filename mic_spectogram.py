@@ -8,7 +8,7 @@ import numpy as np
 import sounddevice as sd
 
 
-from led import led
+from library.led import led
 
 
 usage_line = ' press <enter> to quit, +<enter> or -<enter> to change scaling '

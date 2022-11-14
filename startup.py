@@ -7,7 +7,7 @@ sys.path.append('/usr/local/lib/python3.7/dist-packages')
 import board
 import busio
 import time
-import led
+import library.led as led
 
 
 #import simple sound lib
@@ -18,7 +18,7 @@ i2c = busio.I2C(board.I2C2_SCL, board.I2C2_SDA)
 
 #play startup sound async
 #playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
-playsound('/home/mendel/coral_test/startup.wav', block=False)
+playsound('.static/sounds/startup.wav', block=False)
 """"
 def startup():
 	#led fade

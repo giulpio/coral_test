@@ -1,13 +1,13 @@
 import startup
 import shutdown
-import i2c
+import library.i2c as i2c 
 #import gyro
-from gyro import move
-from led import led, led_low
-from buttons import *
+from library.gyro import move
+from library.led import led, led_low
+from library.buttons import *
 from random import randint
 
-from mic import *
+from library.mic import *
 
 import time
 from timeit import default_timer as timer

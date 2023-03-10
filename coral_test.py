@@ -9,6 +9,8 @@ from random import randint
 
 from library.mic import *
 
+from library.status import status
+
 import time
 from timeit import default_timer as timer
 
@@ -45,7 +47,7 @@ try:
          with sd.InputStream(device=device, channels=1, callback=led_mic,
                                     blocksize=int(samplerate * block_duration / 1000),
                                     samplerate=samplerate):
-            while True:
+            while status():
             
                 if read(switch):
                     printmic = True
@@ -56,10 +58,6 @@ try:
                     led(255,0,0)
                     last_act=timer()
                     pass
-                    '''elif read(button2):
-                    led(0,0,255)
-                    last_act=timer()
-                    pass'''
                 elif move(0.08):
                     led(randint(0,255), randint(0,255), randint(0,255))
                     last_act=timer()

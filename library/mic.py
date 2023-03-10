@@ -23,6 +23,7 @@ low_bin = math.floor(low / delta_f)
 a=0
 
 
+
 def callback(indata, frames, time, status):
     if any(indata):
         magnitude = np.abs(np.fft.rfft(indata[:, 0], n=fftsize))

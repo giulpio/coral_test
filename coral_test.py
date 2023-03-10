@@ -39,40 +39,40 @@ def led_mic(indata, frames, time, status):
         print('no input')
 
 
-if __name__ == '__main__':
-    try:
-         startup()
-         time.sleep(1)
-         with sd.InputStream(device=device, channels=1, callback=led_mic,
-                                    blocksize=int(samplerate * block_duration / 1000),
-                                    samplerate=samplerate):
-            while status():
-            
-                if read(switch):
-                    printmic = True
-                    #print(a)
-                    #led(a,a,a)
+
+try:
+        startup()
+        time.sleep(1)
+        with sd.InputStream(device=device, channels=1, callback=led_mic,
+                                blocksize=int(samplerate * block_duration / 1000),
+                                samplerate=samplerate):
+        while status():
+        
+            if read(switch):
+                printmic = True
+                #print(a)
+                #led(a,a,a)
+                last_act = timer()
+            elif read(button):
+                led(255,0,0)
+                last_act=timer()
+                pass
+            elif move(0.08):
+                led(randint(0,255), randint(0,255), randint(0,255))
+                last_act=timer()
+                pass
+            else:
+                if timer() - last_act > 0.01:
+                    #print("low")
                     last_act = timer()
-                elif read(button):
-                    led(255,0,0)
-                    last_act=timer()
-                    pass
-                elif move(0.08):
-                    led(randint(0,255), randint(0,255), randint(0,255))
-                    last_act=timer()
-                    pass
-                else:
-                    if timer() - last_act > 0.01:
-                        #print("low")
-                        last_act = timer()
-                        led_low(5)
-                    pass
-            shutdown()
-       
-    except KeyboardInterrupt:
-        print('Interrupted by user')
-    except Exception as e:
-        print(type(e).__name__ + ': ' + str(e))
+                    led_low(5)
+                pass
+        shutdown()
+    
+except KeyboardInterrupt:
+    print('Interrupted by user')
+except Exception as e:
+    print(type(e).__name__ + ': ' + str(e))
 
 """
 

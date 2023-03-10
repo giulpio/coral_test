@@ -52,14 +52,14 @@ try:
                     #print(a)
                     #led(a,a,a)
                     last_act = timer()
-                elif read(button1):
-                    led(0,255,0)
+                elif read(button):
+                    led(255,0,0)
                     last_act=timer()
                     pass
-                elif read(button2):
+                    '''elif read(button2):
                     led(0,0,255)
                     last_act=timer()
-                    pass
+                    pass'''
                 elif move(0.08):
                     led(randint(0,255), randint(0,255), randint(0,255))
                     last_act=timer()

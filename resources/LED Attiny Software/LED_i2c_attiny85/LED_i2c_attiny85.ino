@@ -147,7 +147,7 @@ void setup()
     TinyWireS.onRequest(requestEvent);
 
     pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
-
+    
     pixels.clear(); // Set all pixel colors to 'off'
 
   // The first NeoPixel in a strand is #0, second is 1, all the way up

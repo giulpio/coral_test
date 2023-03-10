@@ -7,10 +7,10 @@ import board
 import digitalio
 import time
 
-button1 = digitalio.DigitalInOut(board.D12)
-button2 = digitalio.DigitalInOut(board.D22)
-switch = digitalio.DigitalInOut(board.D19)
-neo = digitalio.DigitalInOut(board.D16)
+button = digitalio.DigitalInOut(board.D0)
+#button2 = digitalio.DigitalInOut(board.D22)
+switch = digitalio.DigitalInOut(board.D13)
+#neo = digitalio.DigitalInOut(board.D16)
 
 
 def read(button):
@@ -19,10 +19,10 @@ def read(button):
     return (b1 and button.value)
 
 def deinit():
-    button1.deinit()
-    button2.deinit()
+    button.deinit()
+    #button2.deinit()
     switch.deinit()
-    neo.deinit()
+    #eo.deinit()
 """
 from symbol import classdef
 

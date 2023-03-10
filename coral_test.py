@@ -41,11 +41,11 @@ def led_mic(indata, frames, time, status):
 
 
 try:
-        startup()
-        time.sleep(1)
-        with sd.InputStream(device=device, channels=1, callback=led_mic,
-                                blocksize=int(samplerate * block_duration / 1000),
-                                samplerate=samplerate):
+    startup()
+    time.sleep(1)
+    with sd.InputStream(device=device, channels=1, callback=led_mic,
+                            blocksize=int(samplerate * block_duration / 1000),
+                            samplerate=samplerate):
         while status():
         
             if read(switch):
@@ -67,7 +67,7 @@ try:
                     last_act = timer()
                     led_low(5)
                 pass
-        shutdown()
+    shutdown()
     
 except KeyboardInterrupt:
     print('Interrupted by user')

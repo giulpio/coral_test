@@ -14,7 +14,7 @@ from playsound import playsound
 
 def shutdown():
     led.led(255, 50, 0)
-    playsound('./static/sounds/beep-01a.mp3', block=True)
+    playsound('/home/mendel/coral_test/static/sounds/beep-01a.mp3', block=True)
     print("power cable unplugged --> closing program and shutdown system")
     led.led(0,0,0)
     os.system("sudo shutdown")

@@ -45,7 +45,7 @@ try:
     time.sleep(1)
     with sd.InputStream(device=device, channels=1, callback=led_mic,
                             blocksize=int(samplerate * block_duration / 1000),
-                            samplerate=samplerate):
+                            samplerate=16000):#samplerate):
         while status():
         
             if read(switch):

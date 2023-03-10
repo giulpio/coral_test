@@ -16,9 +16,8 @@ from playsound import playsound
 #initilaize i2c
 i2c = busio.I2C(board.I2C2_SCL, board.I2C2_SDA)
 
-#play startup sound async
-#playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
-playsound('.static/sounds/startup.wav', block=False)
+
+
 """"
 def startup():
 	#led fade
@@ -48,7 +47,12 @@ if __name__ == "__main__":
 """
 
 def startup():
-	#led fade
+	
+	####play startup sound async
+	#playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
+	playsound('./static/sounds/startup.wav', block=False)
+
+	#####led fade
 	for i in range(2):      
 		for n in range(50):
 			try:
@@ -71,7 +75,7 @@ def startup():
 
 
 if __name__ == "__main__":
-	startup()
+	#startup()
 	print("starting...")
 	startup()
 	print("ok")

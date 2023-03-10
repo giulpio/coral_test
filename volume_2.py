@@ -126,7 +126,7 @@ if __name__ == '__main__':
                 clkState = encoder_1.value
                 dtState = encoder_2.value
                 if clkState != clkLastState:
-                    print('clkState: ',clkState, ' dtState: ', dtState )
+                    #print('clkState: ',clkState, ' dtState: ', dtState )
                     #time.sleep(0.2)     
                     if dtState == clkState:
                         #vol = m.getvolume()
@@ -151,7 +151,8 @@ if __name__ == '__main__':
                         t1 = threading.Thread(target=amixer, args = ['set Master {}%'.format(newVol)])
                         t1.daemon= True
                         t1.start()
-                        print(newVol)
+                        if(volume != newVol):
+                            print(newVol)
                         volume = newVol
                     except:
                         pass

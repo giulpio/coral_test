@@ -1,5 +1,5 @@
 
-from i2c import i2c1
+from .i2c import i2c1
 import time
 import adafruit_mpu6050
 

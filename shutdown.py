@@ -10,7 +10,7 @@ from playsound import playsound
 #play shutdown sound sync
 
 def shutdown():
-    playsound('/home/mendel/coral_test/beep-01a.mp3', block=True)
+    playsound('./satic/beep-01a.mp3', block=True)
     print("power cable unplugged --> closing program and shutdown system")
     os.system("sudo shutdown")
     

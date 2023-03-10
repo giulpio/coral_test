@@ -1,4 +1,4 @@
-from i2c import i2c2
+from .i2c import i2c2
 import time
 
 rg,gg,bg = 0,0,0

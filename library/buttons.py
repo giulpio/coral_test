@@ -7,9 +7,9 @@ import board
 import digitalio
 import time
 
-button = digitalio.DigitalInOut(board.D0)
+button = digitalio.DigitalInOut(board.GPIO0)
 #button2 = digitalio.DigitalInOut(board.D22)
-switch = digitalio.DigitalInOut(board.D13)
+switch = digitalio.DigitalInOut(board.GPIO13)
 #neo = digitalio.DigitalInOut(board.D16)
 
 

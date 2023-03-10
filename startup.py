@@ -71,6 +71,7 @@ def startup():
 
 
 if __name__ == "__main__":
+	startup()
 	print("starting...")
 	startup()
 	print("ok")

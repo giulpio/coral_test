@@ -13,3 +13,6 @@ def shutdown():
     playsound('/home/mendel/coral_test/beep-01a.mp3', block=True)
     print("power cable unplugged --> closing program and shutdown system")
     os.system("sudo shutdown")
+    
+if __name__ == "__main__":
+	shutdown()

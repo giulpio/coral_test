@@ -1,5 +1,5 @@
-import startup
-import shutdown
+from startup import startup
+from shutdown import shutdown
 import library.i2c as i2c 
 #import gyro
 from library.gyro import move
@@ -16,8 +16,6 @@ from timeit import default_timer as timer
 
 last_act = timer()
 
-startup.startup()
-time.sleep(1)
 
 printmic = False
 
@@ -41,9 +39,10 @@ def led_mic(indata, frames, time, status):
         print('no input')
 
 
-
-try:
-    
+if __name__ == '__main__':
+    try:
+         startup()
+         time.sleep(1)
          with sd.InputStream(device=device, channels=1, callback=led_mic,
                                     blocksize=int(samplerate * block_duration / 1000),
                                     samplerate=samplerate):
@@ -68,11 +67,12 @@ try:
                         last_act = timer()
                         led_low(5)
                     pass
+            shutdown()
        
-except KeyboardInterrupt:
-    print('Interrupted by user')
-except Exception as e:
-    print(type(e).__name__ + ': ' + str(e))
+    except KeyboardInterrupt:
+        print('Interrupted by user')
+    except Exception as e:
+        print(type(e).__name__ + ': ' + str(e))
 
 """
 

@@ -8,6 +8,7 @@ import board
 import digitalio
 import threading
 
+from library.led import led
 DEBUG = True
 
 # Set desired minimum and maximum values
@@ -19,7 +20,6 @@ volume_step_size=1
 
 is_Muted = 0
 volume = 0
-
 
 
 def debug(str):
@@ -112,7 +112,10 @@ if __name__ == '__main__':
                     '''print("Mute State: " + str(is_Muted))
                     print("Volume: " + str(int(volume)))
                     print("")'''
-                    
+                    try:
+                        led(255,0,0)
+                    except:
+                        pass
                 else:
                     is_Muted = True
                     #m.setmute(1)from time import sleep

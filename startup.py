@@ -50,7 +50,7 @@ def startup():
 	
 	####play startup sound async
 	#playsound('/home/mendel/coral_test/Windows XP Startup.mp3', block=False)
-	playsound('/home/mendel/coral_test/static/sounds/startup_highwav', block=False)
+	playsound('/home/mendel/coral_test/static/sounds/startup_high.wav', block=False)
 
 	#####led fade
 	for i in range(2):      

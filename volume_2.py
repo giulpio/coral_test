@@ -137,6 +137,7 @@ if __name__ == '__main__':
                         vol = int(volume)
                         newVol = vol - volume_step_size
                         
+                        
                     else:
                         #vol = m.getvolume()
                         #vol = int(vol[0])
@@ -157,6 +158,10 @@ if __name__ == '__main__':
                         if(volume != newVol):
                             print(newVol)
                         volume = newVol
+                        try:
+                            led(0,0,255*(volume/100))
+                        except:
+                            pass
                     except:
                         pass
                     '''

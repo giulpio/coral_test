@@ -159,7 +159,7 @@ if __name__ == '__main__':
                             print(newVol)
                         volume = newVol
                         try:
-                            led(0,0,255*(volume/100))
+                            led(0,0,int(255*(volume/100)))
                         except:
                             pass
                     except:

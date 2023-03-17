@@ -79,86 +79,89 @@ class VolumeError(Exception):
 
 
 def check_volume():
-    with digitalio.DigitalInOut(board.GPIO39) as encoder_1, digitalio.DigitalInOut(board.GPIO38) as encoder_2, digitalio.DigitalInOut(board.GPIO37) as encoder_3:
-        encoder_1.direction = digitalio.Direction.INPUT
-        encoder_2.direction = digitalio.Direction.INPUT
-        encoder_3.direction = digitalio.Direction.INPUT
-        global clkLastState
-        global clkState
-        global btnLastState
-        global btnPushed
-        global volume
-        btnPushed = encoder_3.value
-        if ((not btnLastState) and btnPushed):
-            print('press')
-            time.sleep(0.2)
-            if is_Muted:
-                is_Muted = False
-                #amixer("set 'Master' on")
-                '''print("Mute State: " + str(is_Muted))
-                print("Volume: " + str(int(volume)))
-                print("")'''
-                try:
-                    led(255,0,0)
-                except:
-                    pass
-            else:
-                is_Muted = True
-                #m.setmute(1)from time import sleep
-                #amixer("set 'Master' off")
-                '''print("Mute State: " + str(is_Muted))
-                print("Volume: " + str(int(volume)))
-                print("")'''
-            #sync()
-            
-        else:
-            clkState = encoder_1.value
-            dtState = encoder_2.value
-            if clkState != clkLastState:
-                #print('clkState: ',clkState, ' dtState: ', dtState )
-                #time.sleep(0.2)     
-                if dtState == clkState:
-                    #vol = m.getvolume()
-                    #vol = int(vol[0])
-                    vol = int(volume)
-                    newVol = vol - volume_step_size
-                    
-                    
-                else:
-                    #vol = m.getvolume()
-                    #vol = int(vol[0])
-                    vol = int(volume)
-                    newVol = vol + volume_step_size
-                    
-                
-                if newVol > max:
-                        newVol = max
-                
-                if newVol < min:
-                        newVol = min
-                try:
-                    #amixer("set 'Master' {}%".format(newVol))
-                    t1 = threading.Thread(target=amixer, args = ['set Master {}%'.format(newVol)])
-                    t1.daemon= True
-                    t1.start()
-                    if(volume != newVol):
-                        print(newVol)
-                    volume = newVol
+    try:
+        with digitalio.DigitalInOut(board.GPIO39) as encoder_1, digitalio.DigitalInOut(board.GPIO38) as encoder_2, digitalio.DigitalInOut(board.GPIO37) as encoder_3:
+            encoder_1.direction = digitalio.Direction.INPUT
+            encoder_2.direction = digitalio.Direction.INPUT
+            encoder_3.direction = digitalio.Direction.INPUT
+            global clkLastState
+            global clkState
+            global btnLastState
+            global btnPushed
+            global volume
+            btnPushed = encoder_3.value
+            if ((not btnLastState) and btnPushed):
+                print('press')
+                time.sleep(0.2)
+                if is_Muted:
+                    is_Muted = False
+                    #amixer("set 'Master' on")
+                    '''print("Mute State: " + str(is_Muted))
+                    print("Volume: " + str(int(volume)))
+                    print("")'''
                     try:
-                        led(0,0,int(255*(volume/100)))
+                        led(255,0,0)
                     except:
                         pass
-                except:
-                    pass
-                '''
-                if clkState == 1:
-                    print("Mute State: " + str(is_Muted))
+                else:
+                    is_Muted = True
+                    #m.setmute(1)from time import sleep
+                    #amixer("set 'Master' off")
+                    '''print("Mute State: " + str(is_Muted))
                     print("Volume: " + str(int(volume)))
                     print("")'''
                 #sync()
                 
-            clkLastState = clkState
-        btnLastState = btnPushed
+            else:
+                clkState = encoder_1.value
+                dtState = encoder_2.value
+                if clkState != clkLastState:
+                    #print('clkState: ',clkState, ' dtState: ', dtState )
+                    #time.sleep(0.2)     
+                    if dtState == clkState:
+                        #vol = m.getvolume()
+                        #vol = int(vol[0])
+                        vol = int(volume)
+                        newVol = vol - volume_step_size
+                        
+                        
+                    else:
+                        #vol = m.getvolume()
+                        #vol = int(vol[0])
+                        vol = int(volume)
+                        newVol = vol + volume_step_size
+                        
+                    
+                    if newVol > max:
+                            newVol = max
+                    
+                    if newVol < min:
+                            newVol = min
+                    try:
+                        #amixer("set 'Master' {}%".format(newVol))
+                        t1 = threading.Thread(target=amixer, args = ['set Master {}%'.format(newVol)])
+                        t1.daemon= True
+                        t1.start()
+                        if(volume != newVol):
+                            print(newVol)
+                        volume = newVol
+                        try:
+                            led(0,0,int(255*(volume/100)))
+                        except:
+                            pass
+                    except:
+                        pass
+                    '''
+                    if clkState == 1:
+                        print("Mute State: " + str(is_Muted))
+                        print("Volume: " + str(int(volume)))
+                        print("")'''
+                    #sync()
+                    
+                clkLastState = clkState
+            btnLastState = btnPushed
+    except:
+        pass
 
 
 def start_volume():
@@ -195,4 +198,4 @@ if __name__ == '__main__':
     while True:
 #        playsound('/home/mendel/coral_test/static/sounds/startup.wav', block=False)
         check_volume()
-        time.sleep(0.2)
+        

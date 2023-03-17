@@ -195,3 +195,4 @@ if __name__ == '__main__':
     while True:
 #        playsound('/home/mendel/coral_test/static/sounds/startup.wav', block=False)
         check_volume()
+        time.sleep(0.2)

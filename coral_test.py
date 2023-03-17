@@ -11,8 +11,6 @@ from library.mic import *
 
 from library.status import status
 
-from volume_2 import *
-
 import time
 from timeit import default_timer as timer
 
@@ -42,131 +40,36 @@ def led_mic(indata, frames, time, status):
 
 
 if __name__ == '__main__':
+    
+
     try:
         startup()
         time.sleep(1)
         with sd.InputStream(device=device, channels=1, callback=led_mic,
                                 blocksize=int(samplerate * block_duration / 1000),
                                 samplerate=16000):#samplerate):
+            while status():
             
-
-            encoder_clk = 4
-            encoder_data = 17
-            encoder_button = 27
-
-            clkLastState = encoder_1.value
-            btnLastState = encoder_3.value
-
-            sync()
-
-            
-            with digitalio.DigitalInOut(board.GPIO39) as encoder_1, digitalio.DigitalInOut(board.GPIO38) as encoder_2, digitalio.DigitalInOut(board.GPIO37) as encoder_3:
-                encoder_1.direction = digitalio.Direction.INPUT
-                encoder_2.direction = digitalio.Direction.INPUT
-                encoder_3.direction = digitalio.Direction.INPUT
-
-
-                clkLastState = encoder_1.value
-                btnLastState = encoder_3.value
-            
-            
-                while status():
-                
-                    if read(switch):
-                        printmic = True
-                        #print(a)
-                        #led(a,a,a)
+                if read(switch):    
+                    printmic = True
+                    #print(a)
+                    #led(a,a,a)
+                    last_act = timer()
+                elif read(button):
+                    led(255,0,0)
+                    last_act=timer()
+                    pass
+                elif move(0.08):
+                    led(randint(0,255), randint(0,255), randint(0,255))
+                    last_act=timer()
+                    pass
+                else:
+                    if timer() - last_act > 0.01:
+                        #print("low")
                         last_act = timer()
-                    elif read(button):
-                        led(255,0,0)
-                        last_act=timer()
-                        pass
-                    elif move(0.08):
-                        led(randint(0,255), randint(0,255), randint(0,255))
-                        last_act=timer()
-                        pass
-                    else:
-                        if timer() - last_act > 0.01:
-                            #print("low")
-                            last_act = timer()
-                            led_low(5)
-                        pass
-
-                    
-
-                    btnPushed = encoder_3.value
-                    if ((not btnLastState) and btnPushed):
-                        print('press')
-                        time.sleep(0.2)
-                        if is_Muted:
-                            is_Muted = False
-                            #amixer("set 'Master' on")
-                            '''print("Mute State: " + str(is_Muted))
-                            print("Volume: " + str(int(volume)))
-                            print("")'''
-                            try:
-                                led(255,0,0)
-                            except:
-                                pass
-                        else:
-                            is_Muted = True
-                            #m.setmute(1)from time import sleep
-                            #amixer("set 'Master' off")
-                            '''print("Mute State: " + str(is_Muted))
-                            print("Volume: " + str(int(volume)))
-                            print("")'''
-                        #sync()
-                        
-                    else:
-                        clkState = encoder_1.value
-                        dtState = encoder_2.value
-                        if clkState != clkLastState:
-                            #print('clkState: ',clkState, ' dtState: ', dtState )
-                            #time.sleep(0.2)     
-                            if dtState == clkState:
-                                #vol = m.getvolume()
-                                #vol = int(vol[0])
-                                vol = int(volume)
-                                newVol = vol - volume_step_size
-                                
-                                
-                            else:
-                                #vol = m.getvolume()
-                                #vol = int(vol[0])
-                                vol = int(volume)
-                                newVol = vol + volume_step_size
-                                
-                            
-                            if newVol > max:
-                                    newVol = max
-                            
-                            if newVol < min:
-                                    newVol = min
-                            try:
-                                #amixer("set 'Master' {}%".format(newVol))
-                                t1 = threading.Thread(target=amixer, args = ['set Master {}%'.format(newVol)])
-                                t1.daemon= True
-                                t1.start()
-                                if(volume != newVol):
-                                    print(newVol)
-                                volume = newVol
-                                try:
-                                    led(0,0,int(255*(volume/100)))
-                                except:
-                                    pass
-                            except:
-                                pass
-                            '''
-                            if clkState == 1:
-                                print("Mute State: " + str(is_Muted))
-                                print("Volume: " + str(int(volume)))
-                                print("")'''
-                            #sync()
-                            
-                        clkLastState = clkState
-                    btnLastState = btnPushed
-
-            shutdown()
+                        led_low(5)
+                    pass
+        shutdown()
         
     except KeyboardInterrupt:
         print('Interrupted by user')

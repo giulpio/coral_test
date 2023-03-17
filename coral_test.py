@@ -14,6 +14,8 @@ from library.status import status
 import time
 from timeit import default_timer as timer
 
+from volume_3 import *
+
 last_act = timer()
 
 
@@ -43,13 +45,15 @@ if __name__ == '__main__':
     
 
     try:
+        sync()
+        start_volume()
         startup()
         time.sleep(1)
         with sd.InputStream(device=device, channels=1, callback=led_mic,
                                 blocksize=int(samplerate * block_duration / 1000),
                                 samplerate=16000):#samplerate):
             while status():
-            
+                check_volume()
                 if read(switch):    
                     printmic = True
                     #print(a)
